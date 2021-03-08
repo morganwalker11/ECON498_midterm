@@ -2,11 +2,13 @@ Summary Report
 
 This program aims to prefict the Primary Type of the reported crime in Chicago.
 The dataset includes crime data that occured in the city of Chicago since 2001 and designates variables associated with the crime occurances such as location, type, ...etc. 
-I chose to use use a subset of the data from the years 2018, 2019, and 2020. 
+I chose to use use a subset of the data from the years 2015, 2018 and 2019. Majority of the data included is in 2015 from the selection I made from the file. 
 In order to clean the data, I used the function dropna to remove missing values from the dataset that would conflict with the machine's ability to predict. 
 Because the data we want to predict contains discrete values, I imported a linear model and used logistic regression to predict primary time as the target value. 
-Also, by using data imputation, I was able to use dummy variables to get a more accurate prediction. 
 Additionally, I was able to get an accuracy score to find out how accurate the machine was at predicting the crime occurance's primary type, which was done through a metrics function. 
 The Date gives the date in which the crime occured, I converted this to separate the time of day into sections to find out which was the most prevalent time that crime occurs in the city. 
 I used a sample of the dataset because it would run the code faster and provide a accurate enough glipmse into the dataset. By using a sample, it does pose some limitation into the results but it is easier to work with. 
-I tried to include many dummy variables and specifications in order to try and get a higher accuracy score. 
+Once I ran the program, I was able to predict how likely an instance of battery would occur. In the result, the first probability gives how likely the incident is not battery. The second is how likely an incident is battery. 
+When predicting other primary types and their likelihoods, just change line 16 to the desired primary type. (ex. HOMOCIDE)
+I used kfold after this to get my accuracy score of .81 which I am pleased with. 
+Also, the confusion matrix results provide positive feedback for the predictability of the machines. 
