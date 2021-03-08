@@ -53,19 +53,29 @@ new_data = [[1,0,0,0,0,0],
 new_target = machine.predict_proba(new_data)
 print(new_target)
 
-# 	kfold_object = KFold(n_splits=4)
-# 	kfold_object.get_n_splits(data)
-# 	i=0
-# 	for training_index, test_index in kfold_object.split(data):
-# 		i=i+1
-# 		data_training = data[training_index]
-# 		data_test = data[test_index]
-# 		target_training = target[training_index]
-# 		target_test = target[test_index]
-# 		machine = linear_model.LogisticRegression()
-# 		machine.fit(data_training,target_training)
-# 		new_target = machine.predict(data_test)
-# 		print("Accuracy Score: ", metrics.accuracy_score(target_test, new_target))
+
+kfold_object = KFold(n_splits=4)
+kfold_object.get_n_splits(data)
+
+print(kfold_object)
+
+i=0
+for training_index, test_index in kfold_object.split(data):
+	print(i)
+	i=i+1
+	print("training: ", training_index)
+	print("test: ", test_index)
+	data_training = data[training_index]
+	data_test = data[test_index]
+	target_training = target[training_index]
+	target_test = target[test_index]
+	# machine = linear_model.LinearRegression()
+	machine = linear_model.LogisticRegression()
+	machine.fit(data_training, target_training)
+	new_target = machine.predict(data_test)
+	# print(metrics.r2_score(target_test, new_target))
+	print("Accuracy Score: ", metrics.accuracy_score(target_test, new_target))
+	print("Confusion Matrix: \n", metrics.confusion_matrix(target_test, new_target))
 		
 		
 
